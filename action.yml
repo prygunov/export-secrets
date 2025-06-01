@@ -1,0 +1,23 @@
+name: 'Export GitHub Secrets'
+description: 'Exports selected GitHub secrets to a file and uploads it as an artifact'
+author: 'your-name'
+inputs:
+  secrets:
+    description: 'Comma-separated list of secret names to export'
+    required: true
+  output:
+    description: 'Output file name'
+    required: false
+    default: 'secrets.env'
+runs:
+  using: 'composite'
+  steps:
+    - shell: bash
+      run: |
+        chmod +x "${{ github.action_path }}/entrypoint.sh"
+        "${{ github.action_path }}/entrypoint.sh" "${{ inputs.secrets }}" "${{ inputs.output }}"
+    - name: Upload secrets file
+      uses: actions/upload-artifact@v4
+      with:
+        name: exported-secrets
+        path: ${{ inputs.output }}
