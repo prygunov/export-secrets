@@ -10,7 +10,7 @@ This GitHub Action collects selected secrets and exports them into a `.env` file
 ## Example
 
 ```yaml
-uses: your-username/export-secrets-action@v1
+uses: prygunov/export-secrets-action@v1
 with:
   secrets: API_KEY,DB_PASSWORD
   output: my-secrets.env
