@@ -1,6 +1,6 @@
 name: 'Export GitHub Secrets'
 description: 'Exports selected GitHub secrets to a file and uploads it as an artifact'
-author: 'your-name'
+author: 'prygunov'
 inputs:
   secrets:
     description: 'Comma-separated list of secret names to export'
